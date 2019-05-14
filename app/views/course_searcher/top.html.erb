@@ -5,11 +5,11 @@
 
 <h1>CourseSearcher</h1>
 <p>logo image</p>
-<a href="">All search</a><br>
+<%= link_to "All_search", {controller: 'course_searcher', action: 'top'}, {method: :get} %>
 word search
 <!--railsのtextboxを使ってみたかったので使う-->
 <%= text_field :page, :keyword %>
-<%= button_to "search", {controller: 'course_searcher', action: 'error'}, {method: :get} %>
+<%= button_to "search", {controller: 'course_searcher', action: 'multiple_list'}, {method: :get} %>
 <!--railsのradio buttonを使ってみたかったので使う-->
 <%= radio_button 'page', 'category', 'keyword', {:checked => true} %>keyword
 <%= radio_button 'page', 'category', 'category', {} %>category
