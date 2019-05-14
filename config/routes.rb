@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'course_searcher/top'
+  #get 'course_searcher/top'
 
   get 'course_searcher/error'
 
