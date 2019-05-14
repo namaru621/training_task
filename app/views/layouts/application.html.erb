@@ -9,6 +9,18 @@
   </head>
 
   <body>
+    <header style="background-color:lightblue;"> 
+      <hgroup>
+      <p><font color="white"><b>
+          <%= link_to "Top", {controller: 'course_searcher', action: 'top'}, {method: :get} %>|
+          <%= link_to "Create_course", {controller: 'course_searcher', action: 'top'}, {method: :get} %>|
+          <%= link_to "All_course", {controller: 'course_searcher', action: 'top'}, {method: :get} %>
+        </b></font></p>
+      </hgroup>
+    </header>
     <%= yield %>
+    <footer style="background-color:lightblue;">
+      <p><b><font color="white">Cource Searcher</font></b></p>
+    </footer>
   </body>
 </html>
