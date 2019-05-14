@@ -1,0 +1,16 @@
+<!--
+  html風の記述でうまくサイトを構成します
+  テンプレートはtraining_task/...s
+-->
+
+<h1>CourseSearcher</h1>
+<p>logo image</p>
+<p>
+<a href="">All search</a><br>
+word search
+<!--railsのtextboxを使ってみたかったので使う-->
+<%= text_field :page, :keyword %><br>
+<!--railsのradio buttonを使ってみたかったので使う-->
+<%= radio_button 'page', 'category', 'keyword', {:checked => true} %>keyword<br>
+<%= radio_button 'page', 'category', 'category', {} %>category
+</p>
