@@ -5,11 +5,21 @@
 
 <h1>CourseSearcher</h1>
 <p>logo image</p>
-<%= link_to "All_search", {controller: 'course_searcher', action: 'top'}, {method: :get} %>
+<%= link_to "All_search", {controller: 'course_searcher', action: 'top'}, {method: :get} %><br>
 word search
 <!--railsのtextboxを使ってみたかったので使う-->
 <%= text_field :page, :keyword %>
 <%= button_to "search", {controller: 'course_searcher', action: 'multiple_list'}, {method: :get} %>
 <!--railsのradio buttonを使ってみたかったので使う-->
-<%= radio_button 'page', 'category', 'keyword', {:checked => true} %>keyword
-<%= radio_button 'page', 'category', 'category', {} %>category
+<%= radio_button 'page', 'category', 'keyword', {:checked => false} %>keyword
+<%= radio_button 'page', 'category', 'category', {:checked => true} %>category
+<!--なんとformを使うためにそれ用のタグがあるらしいな？-->
+<%= form_tag(course_searcher_top_path, :method => 'get') do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag 'Search', :name => nil %>
+<% end %>
+
+<%= @courses.instance_variables %>
+<%= @courses.instance_methods %>
+<%= @courses.all.first.course_title %>
+
