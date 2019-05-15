@@ -9,17 +9,19 @@
 word search
 <!--railsのtextboxを使ってみたかったので使う-->
 <%= text_field :page, :keyword %>
-<%= button_to "search", {controller: 'course_searcher', action: 'multiple_list'}, {method: :get} %>
 <!--railsのradio buttonを使ってみたかったので使う-->
 <%= radio_button 'page', 'category', 'keyword', {:checked => false} %>keyword
 <%= radio_button 'page', 'category', 'category', {:checked => true} %>category
+
 <!--なんとformを使うためにそれ用のタグがあるらしいな？-->
-<%= form_tag(course_searcher_top_path, :method => 'get') do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search', :name => nil %>
+<%= form_with url: course_searcher_error_path, :method => 'get', local: true do |form| %>
+  <%= form.text_field :search %>
+  <%= form.submit 'Search', :name => nil %>
 <% end %>
 
-<%= @courses.instance_variables %>
-<%= @courses.instance_methods %>
-<%= @courses.all.first.course_title %>
+<%= form_with url: course_searcher_multiple_list_path(@courses), :method => 'get', local: true do |form| %>
+  <%= form.text_field :search %>
+  <%= form.submit 'Search', :name => nil %>
+<% end %>
 
+<!--test表示用-->
