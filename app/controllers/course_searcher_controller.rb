@@ -11,6 +11,7 @@ class CourseSearcherController < ApplicationController
   end
 
 ## 複数検索をする用のaction
+## radio buttonによる分岐ありkeyword or category
   def multiple_list
     puts params
     if params[:mode] == 'category'
