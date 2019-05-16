@@ -1,6 +1,7 @@
 ### actionを記述するコントローラー、Viewからパス→RouterでPathとActionに変換後にここ
 ### 実行後にPathのリンク先へ飛ぶ？
 ### 何らかの操作はここでやるのが良さそう？
+
 class CourseSearcherController < ApplicationController
   def top
   end

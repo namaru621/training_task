@@ -1,11 +1,16 @@
 <!--
   html風の記述でうまくサイトを構成します
-  テンプレートは./app/view/layouts/...
+  テンプレートは./app/view/layouts/app/views/layouts/application.html.erb
 -->
 
 <h2>Search result</h2>
 <p>
 word search<br>
+<!--
+  検索結果一覧の表示
+  link_toでの値渡し付近で躓きがち、でも単純に値が渡せるらしい
+  渡した先はparam[:search_result]
+-->
 <%= @courses.length %>
 <table border="1">
   <tr>
