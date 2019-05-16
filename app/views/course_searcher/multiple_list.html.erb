@@ -1,16 +1,27 @@
 <!--
   html風の記述でうまくサイトを構成します
-  テンプレートはtraining_task/...s
+  テンプレートは./app/view/layouts/...
 -->
 
-<h1>CourseSearcher</h1>
-<p>logo image</p>
+<h2>Search result</h2>
 <p>
-<a href="">All search</a><br>
-word search
-<!--railsのtextboxを使ってみたかったので使う-->
-<%= text_field :page, :keyword %><br>
-<!--railsのradio buttonを使ってみたかったので使う-->
-<%= radio_button 'page', 'category', 'keyword', {:checked => true} %>keyword<br>
-<%= radio_button 'page', 'category', 'category', {} %>category
+word search<br>
+<%= @courses.length %>
+<table border="1">
+  <tr>
+    <th>course_id</th><th>course_title</th><th>topic</th><th>day_length</th><th>price</th>
+    <th>level_id</th><th>category</th>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= link_to course.course_id, course_searcher_single_course_path(@course, search_result: course.course_id), :method => 'get', local: true %></td>
+        <td><%= course.course_title %></td>
+        <td><%= course.topic %></td>
+        <td><%= course.day_length %></td>
+        <td><%= course.price %></td>
+        <td><%= course.level_id %></td>
+        <td><%= course.category %></td>
+      </tr>
+    <% end %>
+  </tr>
+</table>
 </p>

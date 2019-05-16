@@ -16,14 +16,14 @@
 #
 default: &default
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  database: training_task_development
+  database: training_db
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: training_task_test
+  database: training_db
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: training_task_production
-  username: training_task
-  password: <%= ENV['TRAINING_TASK_DATABASE_PASSWORD'] %>
+  database: training_db
+  #  username: postgres
+  #  password: <%= ENV['TRAINING_TASK_DATABASE_PASSWORD'] %>
