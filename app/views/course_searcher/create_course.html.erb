@@ -1,15 +1,15 @@
 <h2>Create course</h2>
 <p>
-<%= form_with url: course_searcher_create_path(@course), :method => 'post', local: true do |form| %>
+<%= form_with url: course_searcher_create_path(@new_course), :method => 'post', local: true do |form| %>
 <table border="1">
   <tr><th>course_id     </th><td><%= form.text_field :create_course_id   , size: 50 %></td></tr>
-  <tr><th>course_title  </th><td><%= form.text_field :treate_course_title, size: 50 %></td></tr>
+  <tr><th>course_title  </th><td><%= form.text_field :create_course_title, size: 50 %></td></tr>
   <tr><th>topic         </th><td><%= form.text_field :create_topic       , size: 50 %></td></tr>
   <tr><th>day_length    </th><td><%= form.text_field :create_day_length  , size: 50 %></td></tr>
   <tr><th>price         </th><td><%= form.text_field :create_price       , size: 50 %></td></tr>
   <tr><th>level_id      </th><td><%= form.text_field :create_level_id    , size: 50 %></td></tr>
   <tr><th>category      </th><td><%= form.text_field :create_category    , size: 50 %></td></tr>
 </table>
-<%= form.submit 'Create', :name => nil, :search_result => nil %>
+<%= form.submit 'Create', :name => nil %>
 <% end %>
 </p>

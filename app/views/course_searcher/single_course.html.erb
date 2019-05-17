@@ -21,5 +21,6 @@ word search<br>
   <tr><th>level_id      </th><td><%= form.text_field :level_id    , value: @course.level_id    , size: 50 %></td></tr>
   <tr><th>category      </th><td><%= form.text_field :category    , value: @course.category    , size: 50 %></td></tr>
 </table>
+<%= form.submit 'Update' %>
 <% end %>
 </p>

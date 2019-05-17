@@ -41,8 +41,7 @@ class CourseSearcherController < ApplicationController
                                         level_id:     params[:create_level_id],
                                         category:     params[:create_category]   
                                        )
-    @course = CourseSearcher.where("id != '0'").keyword_search(params[:course_id]).first
-    redirect_to action: 'single_course', course_id: @new_course.course_id
+    redirect_to action: 'single_course', search_result: @new_course.course_id
   end
 
   def error

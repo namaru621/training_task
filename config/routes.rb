@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'course_searcher/single_course/', to: 'course_searcher#single_course', as: 'course_searcher_single_course'
 
   get 'course_searcher/create_course/', to: 'course_searcher#create_course', as: 'course_searcher_create_course'
-  get 'course_searcher/single_course/', to: 'course_searcher#create', as: 'course_searcher_create'
+  post 'course_searcher/single_course/', to: 'course_searcher#create', as: 'course_searcher_create'
 
   get 'course_searcher/error'
 
