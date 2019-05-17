@@ -23,9 +23,15 @@ class CourseSearcherController < ApplicationController
     if @courses.length == 1
       puts 'hoge'
       redirect_to action: 'single_course', search_result: @courses.first.course_id
+    elsif @courses.length < 1
+      puts 'hogehoge'
+      redirect_to action: 'error', error_type: 'no_result'
     end
   end
 
   def error
+    if params[:error_type] == 'no_result'
+      @message = 'This search is no result!'
+    end
   end
 end
