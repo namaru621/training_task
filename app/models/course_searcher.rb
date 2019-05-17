@@ -1,3 +1,8 @@
+### Modelの記述部分
+### 何をやっているかはさっぱりだけど(主にやっているのはSQLの発行っぽい？)
+### 検索で参照する範囲を別のメソッドとして作成してみた
+### ちなみに引数がnilだった場合には全件を返すようにしている(ネットを参考にした)
+
 class CourseSearcher < ApplicationRecord
   def self.keyword_search(search)
     if search
