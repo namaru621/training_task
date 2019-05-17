@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resource :search
 
+  root 'course_searcher#top'
   get 'course_searcher/top', to: 'course_searcher#top', as: 'course_searcher_top'
 
   get 'course_searcher/multiple_list/', to: 'course_searcher#multiple_list', as: 'course_searcher_multiple_list'
