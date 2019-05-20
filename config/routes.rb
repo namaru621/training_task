@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resource :search
+  #resource :search
 
   root 'course_searcher#top'
   get 'course_searcher/top', to: 'course_searcher#top', as: 'course_searcher_top'
@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   get 'course_searcher/multiple_list/', to: 'course_searcher#multiple_list', as: 'course_searcher_multiple_list'
 
   get 'course_searcher/single_course/', to: 'course_searcher#single_course', as: 'course_searcher_single_course'
+  post 'course_searcher/single_course/', to: 'course_searcher#update', as: 'course_searcher_update'
 
   get 'course_searcher/create_course/', to: 'course_searcher#create_course', as: 'course_searcher_create_course'
-  get 'course_searcher/single_course/', to: 'course_searcher#create', as: 'course_searcher_create'
+  post 'course_searcher/create_course/', to: 'course_searcher#create', as: 'course_searcher_create'
 
   get 'course_searcher/error'
 
