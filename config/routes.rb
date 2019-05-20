@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post 'course_searcher/single_course/', to: 'course_searcher#update', as: 'course_searcher_update'
 
   get 'course_searcher/create_course/', to: 'course_searcher#create_course', as: 'course_searcher_create_course'
-  post 'course_searcher/single_course/', to: 'course_searcher#create', as: 'course_searcher_create'
+  post 'course_searcher/create_course/', to: 'course_searcher#create', as: 'course_searcher_create'
 
   get 'course_searcher/error'
 

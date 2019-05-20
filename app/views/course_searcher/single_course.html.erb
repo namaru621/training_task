@@ -22,5 +22,6 @@ single course<br>
   <tr><th>category      </th><td><%= form.text_field :create_category    , value: @course.category    , size: 50 %></td></tr>
 </table>
 <%= form.submit 'Update' %>
+<%= form.submit 'Delete', name: 'delete_button' %>
 <% end %>
 </p>
