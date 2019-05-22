@@ -9,7 +9,7 @@
   削除確認ページ
 -->
 delete course<br>
-<%= form_with url: course_searcher_delete_path(@delete_course), :method => 'delete', local: true do |form| %>
+<%= form_with url: courses_searcher_delete_path(@delete_course), :method => 'delete', local: true do |form| %>
 <table border="1">
   <tr><th>course_id     </th><td><%= form.text_field :delete_course_id   , value: @delete_course.course_id   , size: 50, :readonly => true %></td></tr>
   <tr><th>course_title  </th><td><%= form.text_field :delete_course_title, value: @delete_course.course_title, size: 50, :readonly => true %></td></tr>
