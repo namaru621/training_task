@@ -50,13 +50,18 @@ class CoursesSearcherController < ApplicationController
 
   def delete
     puts 'delete!!!!!'
-    @new_course = CourseSearcher.find(params[:delete_course_id])
-    @new_course.destroy
+    @delete_course = CourseSearcher.find(params[:delete_course_id])
+    @delete_course.destroy
     @delete_result = params[:delete_course_id]
   end
 
   def delete_check
-    @delete_course = CourseSearcher.find(params[:create_course_id])
+    # find_byだと見つからなかった場合nilを返す
+    # findだと見つからなかった場合例外が発生する
+    @delete_course = CourseSearcher.find_by(course_id: params[:create_course_id])
+    if @delete_course.nil?
+      redirect_to action: 'error'
+    end
   end
 
   def update
