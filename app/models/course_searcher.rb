@@ -4,6 +4,8 @@
 ### ちなみに引数がnilだった場合には全件を返すようにしている(ネットを参考にした)
 
 class CourseSearcher < ApplicationRecord
+  validates :course_id, length: { maximum: 20 }, presence: true, uniqueness: true, format: { with: /\A[A-Za-z0-9\-]+\z/i }
+
   def self.keyword_search(search)
     if search
       where(['concat(course_id, course_title, topic, day_length, price, level_id, category) LIKE ?', "%#{search}%"])

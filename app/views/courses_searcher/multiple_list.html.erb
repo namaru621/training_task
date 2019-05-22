@@ -18,7 +18,7 @@ word search<br>
     <th>level_id</th><th>category</th>
     <% @courses.each do |course| %>
       <tr>
-        <td><%= link_to course.course_id, course_searcher_single_course_path(@course, search_result: course.course_id), :method => 'get', local: true %></td>
+        <td><%= link_to course.course_id, courses_searcher_single_course_path(@course, search_result: course.course_id), :method => 'get', local: true %></td>
         <td><%= course.course_title %></td>
         <td><%= course.topic %></td>
         <td><%= course.day_length %></td>
