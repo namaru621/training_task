@@ -16,7 +16,7 @@ class CourseSearcherController < ApplicationController
   def multiple_list
     puts params
     if params[:mode] == 'category'
-      @courses = CourseSearcher.where("id != '0'").category_search(params[:search])
+      @courses = CourseSearcher.category_search(params[:search])
     else
       @courses = CourseSearcher.keyword_search(params[:search])
     end
@@ -43,19 +43,31 @@ class CourseSearcherController < ApplicationController
     redirect_to action: 'single_course', search_result: @new_course.course_id
   end
 
-  def update
-    puts 'update!!!!!'
-    @new_course = CourseSearcher.find(params[:create_course_id])
-    @new_course.update(course_title: params[:create_course_title],
-                       topic:        params[:create_topic],
-                       day_length:   params[:create_day_length],
-                       price:        params[:create_price],
-                       level_id:     params[:create_level_id],
-                       category:     params[:create_category])   
-
-    redirect_to action: 'single_course', search_result: @new_course.course_id
+  def delete
+    puts 'delete!!!!!'
+    @new_course = CourseSearcher.find(params[:delete_course_id])
+    @new_course.destroy
+    @delete_result = params[:delete_course_id]
   end
 
+  def delete_check
+    @delete_course = CourseSearcher.find(params[:create_course_id])
+  end
+
+  def update
+    if params[:delete_button]
+    else
+      puts 'update!!!!!'
+      @new_course = CourseSearcher.find(params[:create_course_id])
+      @new_course.update(course_title: params[:create_course_title],
+                         topic:        params[:create_topic],
+                         day_length:   params[:create_day_length],
+                         price:        params[:create_price],
+                         level_id:     params[:create_level_id],
+                         category:     params[:create_category])   
+      redirect_to action: 'single_course', search_result: @new_course.course_id
+    end
+  end
   def error
     if params[:error_type] == 'no_result'
       @message = 'This search is no result!'

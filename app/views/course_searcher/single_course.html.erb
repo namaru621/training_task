@@ -11,7 +11,8 @@
   valueの指定とか値受け渡しでつまずいたときはここを参照する
 -->
 single course<br>
-<%= form_with url: course_searcher_update_path, :method => 'post', local: true do |form| %>
+<%= link_to "delete this course", course_searcher_delete_check_path(create_course_id: @course.course_id), :method => 'get' %><br>
+<%= form_with url: course_searcher_update_path, :method => 'put', local: true do |form| %>
 <table border="1">
   <tr><th>course_id     </th><td><%= form.text_field :create_course_id   , value: @course.course_id   , size: 50, :readonly => true %></td></tr>
   <tr><th>course_title  </th><td><%= form.text_field :create_course_title, value: @course.course_title, size: 50 %></td></tr>
@@ -22,6 +23,5 @@ single course<br>
   <tr><th>category      </th><td><%= form.text_field :create_category    , value: @course.category    , size: 50 %></td></tr>
 </table>
 <%= form.submit 'Update' %>
-<%= form.submit 'Delete', name: 'delete_button' %>
 <% end %>
 </p>
