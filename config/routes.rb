@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'courses_searcher/multiple_list/', to: 'courses_searcher#multiple_list', as: 'courses_searcher_multiple_list'
 
   get 'courses_searcher/single_course/', to: 'courses_searcher#single_course', as: 'courses_searcher_single_course'
-  put 'courses_searcher/single_course/', to: 'courses_searcher#update', as: 'courses_searcher_update'
+  patch 'courses_searcher/single_course/', to: 'courses_searcher#update', as: 'courses_searcher_update'
 
   get 'courses_searcher/create_course/', to: 'courses_searcher#create_course', as: 'courses_searcher_create_course'
   post 'courses_searcher/create_course/', to: 'courses_searcher#create', as: 'courses_searcher_create'
@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   delete 'courses_searcher/delete/', to: 'courses_searcher#delete', as: 'courses_searcher_delete'
 
   get 'courses_searcher/error'
+
+  get 'courses_searcher/index/', to: 'courses_searcher#index', as: 'courses_searcher_index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #root 'courses_searcher#top'

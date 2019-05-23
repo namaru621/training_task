@@ -1,6 +1,6 @@
 <h2>Create course</h2>
 <p>
-<%= form_with url: courses_searcher_create_path(@new_course), :method => 'post', local: true do |form| %>
+<%= form_with url: courses_searcher_create_path, :method => 'post', local: true do |form| %>
 <table border="1">
   <tr><th>course_id     </th><td><%= form.text_field :create_course_id   , size: 50 %></td></tr>
   <tr><th>course_title  </th><td><%= form.text_field :create_course_title, size: 50 %></td></tr>
