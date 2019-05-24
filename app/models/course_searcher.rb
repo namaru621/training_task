@@ -9,8 +9,8 @@ class CourseSearcher < ApplicationRecord
     validates :course_title, length: { maximum: 50 }
     validates :topic,        length: { maximum: 100 }
     validates :category,     length: { maximum: 40 }, format: { with: /\A[A-Za-z0-9]+\z/i }
-    validates :price,        numericality: { greater_than_or_equal_to: 999999, less_than_or_equal_to: 0 }
-    validates :level_id,     numericality: { greater_than_or_equal_to: 5, less_than_or_equal_to: 1 }
+    validates :price,        numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 999999 }
+    validates :level_id,     numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
   end
 
   def self.keyword_search(search)

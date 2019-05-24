@@ -4,47 +4,65 @@
 
 class CoursesSearcherController < ApplicationController
   def top
+    @query = SearchForm.new
   end
 
-## 単数表示する用のaction
+  ## 単数表示する用のaction
   def single_course
-    @course = CourseSearcher.find(params[:search_result])
-  end
-
-## 複数検索をする用のaction
-## radio buttonによる分岐ありkeyword or category
-  def multiple_list
-    puts params
-    if params[:mode] == 'category'
-      @courses = CourseSearcher.category_search(params[:search])
+    if params[:search_result]
+      @course = CourseSearcher.find(params[:search_result])
     else
-      @courses = CourseSearcher.keyword_search(params[:search])
-    end
-    if @courses.length == 1
-      redirect_to action: 'single_course', search_result: @courses.first.course_id
-    elsif @courses.length == 0
       redirect_to action: 'error', error_type: 'no_result'
     end
   end
 
+  ## 複数検索をする用のaction
+  ## radio buttonによる分岐ありkeyword or category
+  def multiple_list
+    puts params
+    @query = SearchForm.new(keyword: params[:search])
+    if @query.valid?
+      if params[:mode] == 'keyword'
+        @courses = CourseSearcher.keyword_search(params[:search])
+      elsif params[:mode] == 'category'
+        @courses = CourseSearcher.category_search(params[:search])
+      end
+
+      if @courses.length == 1
+        redirect_to action: 'single_course', search_result: @courses.first.course_id
+      elsif @courses.length == 0
+        redirect_to action: 'error', error_type: 'no_result'
+      end
+    else
+      render 'top'
+    end
+  end
+
+  def index
+    @courses = CourseSearcher.all
+    render 'multiple_list'
+  end
+
   def create_course
+    @course = CourseSearcher.new
   end
 
   def create
     puts 'create!!!!!'
-    @new_course = CourseSearcher.create(course_id:    params[:create_course_id],
-                                        course_title: params[:create_course_title],
-                                        topic:        params[:create_topic],
-                                        day_length:   params[:create_day_length],
-                                        price:        params[:create_price],
-                                        level_id:     params[:create_level_id],
-                                        category:     params[:create_category]   
-                                       )
-    if @new_course.valid?
-      redirect_to action: 'single_course', search_result: @new_course.course_id
+    @course = CourseSearcher.create(course_id:    params[:create_course_id],
+                                    course_title: params[:create_course_title],
+                                    topic:        params[:create_topic],
+                                    day_length:   params[:create_day_length],
+                                    price:        params[:create_price],
+                                    level_id:     params[:create_level_id],
+                                    category:     params[:create_category]   
+                                   )
+    if @course.valid?
+      redirect_to action: 'single_course', search_result: @course.course_id
     else
       #error messageで対応できるようにしたい
-      redirect_to action: 'error' 
+      #redirect_to action: 'error'
+      render :action => 'create_course'
     end
   end
 
@@ -65,17 +83,24 @@ class CoursesSearcherController < ApplicationController
   end
 
   def update
-    if params[:delete_button]
+    puts 'update!!!!!'
+    @course = CourseSearcher.find(params[:create_course_id])
+    @course.update(course_title: params[:create_course_title],
+                   topic:        params[:create_topic],
+                   day_length:   params[:create_day_length],
+                   price:        params[:create_price],
+                   level_id:     params[:create_level_id],
+                   category:     params[:create_category])   
+    #redirect_to action: 'single_course', search_result: @new_course.course_id
+    if @course.valid?
+      redirect_to action: 'single_course', search_result: @course.course_id
+      puts 'update complete'
     else
-      puts 'update!!!!!'
-      @new_course = CourseSearcher.find(params[:create_course_id])
-      @new_course.update(course_title: params[:create_course_title],
-                         topic:        params[:create_topic],
-                         day_length:   params[:create_day_length],
-                         price:        params[:create_price],
-                         level_id:     params[:create_level_id],
-                         category:     params[:create_category])   
-      redirect_to action: 'single_course', search_result: @new_course.course_id
+      #error messageで対応できるようにしたい
+      #redirect_to action: 'error'
+      puts 'update missing'
+      puts @course.errors.full_messages
+      render :action => 'single_course'
     end
   end
 

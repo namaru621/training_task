@@ -14,11 +14,31 @@
       <p><font color="white"><b>
           <%= link_to "Top", {controller: 'courses_searcher', action: 'top'}, {method: :get} %>|
           <%= link_to "Create_course", {controller: 'courses_searcher', action: 'create_course'}, {method: :get} %>|
-          <%= link_to "All_search", {controller: 'courses_searcher', action: 'multiple_list'}, {method: :get} %>
+          <%= link_to "All_search", {controller: 'courses_searcher', action: 'index'}, {method: :get} %>
         </b></font></p>
       </hgroup>
     </header>
+
+    <% if @query %>
+      <% if @query.errors.any? %>
+        <h2><%= @query.errors.count %>件のエラーがあります。</h2>
+        <% @query.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <% if @course %>
+      <% if @course.errors.any? %>
+        <h2><%= @course.errors.count %>件のエラーがあります。</h2>
+        <% @course.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      <% end %>
+    <% end %>
+
     <%= yield %>
+
     <footer style="background-color:lightblue;">
       <p><b><font color="white">Cource Searcher</font></b></p>
     </footer>
