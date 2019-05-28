@@ -11,13 +11,13 @@
 delete course<br>
 <%= form_with url: courses_searcher_delete_path(@delete_course), :method => 'delete', local: true do |form| %>
 <table border="1">
-  <tr><th>course_id     </th><td><%= form.text_field :delete_course_id   , value: @delete_course.course_id   , size: 50, :readonly => true %></td></tr>
-  <tr><th>course_title  </th><td><%= form.text_field :delete_course_title, value: @delete_course.course_title, size: 50, :readonly => true %></td></tr>
-  <tr><th>topic         </th><td><%= form.text_field :delete_topic       , value: @delete_course.topic       , size: 50, :readonly => true %></td></tr>
-  <tr><th>day_length    </th><td><%= form.text_field :delete_day_length  , value: @delete_course.day_length  , size: 50, :readonly => true %></td></tr>
-  <tr><th>price         </th><td><%= form.text_field :delete_price       , value: @delete_course.price       , size: 50, :readonly => true %></td></tr>
-  <tr><th>level_id      </th><td><%= form.text_field :delete_level_id    , value: @delete_course.level_id    , size: 50, :readonly => true %></td></tr>
-  <tr><th>category      </th><td><%= form.text_field :delete_category    , value: @delete_course.category    , size: 50, :readonly => true %></td></tr>
+  <tr><th>course_id     </th><td><%= form.text_field :course_id   , value: @delete_course.course_id   , size: 50, :readonly => true %></td></tr>
+  <tr><th>course_title  </th><td><%= form.text_field :course_title, value: @delete_course.course_title, size: 50, :readonly => true %></td></tr>
+  <tr><th>topic         </th><td><%= form.text_field :topic       , value: @delete_course.topic       , size: 50, :readonly => true %></td></tr>
+  <tr><th>day_length    </th><td><%= form.text_field :day_length  , value: @delete_course.day_length  , size: 50, :readonly => true %></td></tr>
+  <tr><th>price         </th><td><%= form.text_field :price       , value: @delete_course.price       , size: 50, :readonly => true %></td></tr>
+  <tr><th>level_id      </th><td><%= form.text_field :level_id    , value: @delete_course.level_id    , size: 50, :readonly => true %></td></tr>
+  <tr><th>category      </th><td><%= form.text_field :category    , value: @delete_course.category    , size: 50, :readonly => true %></td></tr>
 </table>
 <%= form.submit 'Delete', name: 'delete_button' %>
 <% end %>
