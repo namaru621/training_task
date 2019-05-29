@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   #resource :search
+  resources :users
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
+
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 
   root 'courses_searcher#top'
   get 'courses_searcher/', to: 'courses_searcher#top'

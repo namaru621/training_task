@@ -44,10 +44,5 @@ describe CoursesSearcherController, type: :request do
           expect(response.body).to include 'too long'
       end
     end
-    context 'paramater is insanity at course_id' do
-      let(:params) { FactoryBot.attributes_for(:create_tester, :over_limit_course_id) }
-        post '/courses_searcher/create_course', params: params
-        expect(response.status).to eq 200
-    end
   end
 end

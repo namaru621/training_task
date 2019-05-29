@@ -1,0 +1,10 @@
+Sign in <br>
+<div>
+<%= form_with url: login_path, scope: :session do |form| %>
+  <%= form.text_field :email                 %> email                <br>
+  <%= form.text_field :password              %> password             <br>
+  <%= form.submit "Login my account" %>
+<% end %>
+</div>
+New user? <%= link_to "Sign up now!", signup_path %>
+

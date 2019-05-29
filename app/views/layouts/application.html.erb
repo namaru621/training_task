@@ -13,8 +13,10 @@
       <hgroup>
       <p><font color="white"><b>
           <%= link_to "Top", {controller: 'courses_searcher', action: 'top'}, {method: :get} %>|
-          <%= link_to "Create_course", {controller: 'courses_searcher', action: 'create_course'}, {method: :get} %>|
-          <%= link_to "All_search", {controller: 'courses_searcher', action: 'index'}, {method: :get} %>
+          <%= link_to "Create_course", courses_searcher_create_course_path, {method: :get} %>|
+          <%= link_to "All_search", courses_searcher_index_path, {method: :get} %>|
+          <%= link_to "sign-up", signup_path, {method: :get} %>|
+          <%= link_to "sign-in", login_path, {method: :get} %>
         </b></font></p>
       </hgroup>
     </header>
