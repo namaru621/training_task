@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   #resource :search
+  resources :users
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
 
   root 'courses_searcher#top'
   get 'courses_searcher/', to: 'courses_searcher#top'

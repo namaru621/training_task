@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20190529060004) do
     t.integer "sno"
   end
 
-  create_table "course_backup", primary_key: "course_id", id: :string, limit: 20, default: "", force: :cascade do |t|
+  create_table "course", primary_key: "course_id", id: :string, limit: 20, default: "", force: :cascade do |t|
     t.string "course_title", limit: 50
     t.string "topic", limit: 100
     t.integer "day_length"
