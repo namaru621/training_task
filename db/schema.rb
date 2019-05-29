@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190515014143) do
+ActiveRecord::Schema.define(version: 20190527075402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,16 +38,13 @@ ActiveRecord::Schema.define(version: 20190515014143) do
     t.string "category", limit: 40
   end
 
-  create_table "course_searchers", force: :cascade do |t|
-    t.string "course_id"
-    t.string "course_title"
-    t.string "topic"
+  create_table "course_searchers", primary_key: "course_id", id: :string, limit: 20, default: "", force: :cascade do |t|
+    t.string "course_title", limit: 50
+    t.string "topic", limit: 100
     t.integer "day_length"
-    t.integer "price"
+    t.integer "price", default: 0, null: false
     t.integer "level_id"
-    t.string "category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "category", limit: 40
   end
 
   create_table "detail", primary_key: ["orderno", "itemno"], force: :cascade do |t|

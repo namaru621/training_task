@@ -4,6 +4,8 @@
 ### ちなみに引数がnilだった場合には全件を返すようにしている(ネットを参考にした)
 
 class CourseSearcher < ApplicationRecord
+  ### validationに使う数値(決め打ちの数値)は定数化するかコメントで分かりやすくするとよい(変更時も便利)
+  ### 定数化する場合はconfig/initializers/constants.rbで宣言しておくとよい
   with_options presence: true do
     validates :course_id,    length: { maximum: 20 }, uniqueness: true, format: { with: /\A[A-Za-z0-9\-]+\z/i }
     validates :course_title, length: { maximum: 50 }

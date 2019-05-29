@@ -19,7 +19,6 @@ class CoursesSearcherController < ApplicationController
   ## 複数検索をする用のaction
   ## radio buttonによる分岐ありkeyword or category
   def multiple_list
-    puts params
     @query = SearchForm.new(keyword: params[:search])
     if @query.valid?
       if params[:mode] == 'keyword'
@@ -48,14 +47,13 @@ class CoursesSearcherController < ApplicationController
   end
 
   def create
-    puts 'create!!!!!'
-    @course = CourseSearcher.create(course_id:    params[:create_course_id],
-                                    course_title: params[:create_course_title],
-                                    topic:        params[:create_topic],
-                                    day_length:   params[:create_day_length],
-                                    price:        params[:create_price],
-                                    level_id:     params[:create_level_id],
-                                    category:     params[:create_category]   
+    @course = CourseSearcher.create(course_id:    params[:course_id],
+                                    course_title: params[:course_title],
+                                    topic:        params[:topic],
+                                    day_length:   params[:day_length],
+                                    price:        params[:price],
+                                    level_id:     params[:level_id],
+                                    category:     params[:category]   
                                    )
     if @course.valid?
       redirect_to action: 'single_course', search_result: @course.course_id
@@ -67,39 +65,34 @@ class CoursesSearcherController < ApplicationController
   end
 
   def delete
-    puts 'delete!!!!!'
-    @delete_course = CourseSearcher.find(params[:delete_course_id])
+    @delete_course = CourseSearcher.find(params[:course_id])
     @delete_course.destroy
-    @delete_result = params[:delete_course_id]
+    @delete_result = params[:course_id]
   end
 
   def delete_check
     # find_byだと見つからなかった場合nilを返す
     # findだと見つからなかった場合例外が発生する
-    @delete_course = CourseSearcher.find_by(course_id: params[:create_course_id])
+    @delete_course = CourseSearcher.find_by(course_id: params[:course_id])
     if @delete_course.nil?
       redirect_to action: 'error'
     end
   end
 
   def update
-    puts 'update!!!!!'
-    @course = CourseSearcher.find(params[:create_course_id])
-    @course.update(course_title: params[:create_course_title],
-                   topic:        params[:create_topic],
-                   day_length:   params[:create_day_length],
-                   price:        params[:create_price],
-                   level_id:     params[:create_level_id],
-                   category:     params[:create_category])   
+    @course = CourseSearcher.find(params[:course_id])
+    @course.update(course_title: params[:course_title],
+                   topic:        params[:topic],
+                   day_length:   params[:day_length],
+                   price:        params[:price],
+                   level_id:     params[:level_id],
+                   category:     params[:category])   
     #redirect_to action: 'single_course', search_result: @new_course.course_id
     if @course.valid?
       redirect_to action: 'single_course', search_result: @course.course_id
-      puts 'update complete'
     else
       #error messageで対応できるようにしたい
       #redirect_to action: 'error'
-      puts 'update missing'
-      puts @course.errors.full_messages
       render :action => 'single_course'
     end
   end
