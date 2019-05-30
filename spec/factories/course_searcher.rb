@@ -33,13 +33,13 @@ FactoryBot.define do
 
     ### over limit-value error系
     #trait :over_value_day_length   do day_length   { nil } end 
-    trait :over_value_price        do price        { 1000000 } end 
-    trait :over_value_level_id     do level_id     { 6 } end 
+    trait :over_value_price        do price        { 999999 + 1 } end 
+    trait :over_value_level_id     do level_id     { 5 + 1 } end 
 
     ### under limit-value error系
     #trait :under_value_day_length   do day_length   { nil } end 
-    trait :under_value_price        do price        { -1 } end 
-    trait :under_value_level_id     do level_id     { 0 } end 
+    trait :under_value_price        do price        { 0 - 1 } end 
+    trait :under_value_level_id     do level_id     { 1 - 1 } end 
 
     ### only alphanumeric character
     trait :use_mark_course_id    do course_id    { str4valid + "_" } end 
