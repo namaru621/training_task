@@ -1,10 +1,10 @@
 Sign up(新規登録)
 <%= form_with model:@user do |form| %>
   <%= render 'shared/error_messages' %>
-  <%= form.text_field :name                  %> name                 <br>
-  <%= form.text_field :email                 %> email                <br>
-  <%= form.text_field :password              %> password             <br>
-  <%= form.text_field :password_confirmation %> password_confirmation<br>
+  <%= form.text_field :name                 , class: 'form-control' %> name                 <br>
+  <%= form.text_field :email                , class: 'form-control' %> email                <br>
+  <%= form.text_field :password             , class: 'form-control' %> password             <br>
+  <%= form.text_field :password_confirmation, class: 'form-control' %> password_confirmation<br>
   <%= form.submit "Create my account" %>
 <% end %>
 
