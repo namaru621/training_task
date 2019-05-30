@@ -1,15 +1,13 @@
-<h2>Create course</h2>
-<p>
+<h1>Create course</h1>
 <%= form_with url: courses_searcher_create_path, :method => 'post', local: true do |form| %>
-<table border="1">
-  <tr><th>course_id     </th><td><%= form.text_field :course_id   , size: 50 %></td></tr>
-  <tr><th>course_title  </th><td><%= form.text_field :course_title, size: 50 %></td></tr>
-  <tr><th>topic         </th><td><%= form.text_field :topic       , size: 50 %></td></tr>
-  <tr><th>day_length    </th><td><%= form.text_field :day_length  , size: 50 %></td></tr>
-  <tr><th>price         </th><td><%= form.text_field :price       , size: 50 %></td></tr>
-  <tr><th>level_id      </th><td><%= form.text_field :level_id    , size: 50 %></td></tr>
-  <tr><th>category      </th><td><%= form.text_field :category    , size: 50 %></td></tr>
-</table>
-<%= form.submit 'Create', :name => nil %>
+  <div class="form-group">
+    <%= form.label :course_id    %><%= form.text_field :course_id   , class: 'form-control' %>
+    <%= form.label :course_title %><%= form.text_field :course_title, class: 'form-control' %>
+    <%= form.label :topic        %><%= form.text_field :topic       , class: 'form-control' %>
+    <%= form.label :day_length   %><%= form.text_field :day_length  , class: 'form-control' %>
+    <%= form.label :price        %><%= form.text_field :price       , class: 'form-control' %>
+    <%= form.label :level_id     %><%= form.text_field :level_id    , class: 'form-control' %>
+    <%= form.label :category     %><%= form.text_field :category    , class: 'form-control' %>
+  </div>
+  <%= form.submit 'Create', class: 'btn btn-primary' %>
 <% end %>
-</p>

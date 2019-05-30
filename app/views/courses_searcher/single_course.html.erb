@@ -2,26 +2,23 @@
   html風の記述でうまくサイトを構成します
   テンプレートはtraining_task/app/views/layouts/application.html.erb
 -->
-
-<h2>Search result</h2>
-<p>
+<% provide(:title, "Log in") %>
+<h1>Search result</h1>
 <!--
   単一表示画面、なんか上手いこと編集できるようにする
   可能ならテキストフィールドの幅を調整したい(css関連)
   valueの指定とか値受け渡しでつまずいたときはここを参照する
 -->
-single course<br>
 <%= link_to "delete this course", courses_searcher_delete_check_path(course_id: @course.course_id), :method => 'get' %><br>
 <%= form_with url: courses_searcher_update_path, :method => 'patch', local: true do |form| %>
-<table border="1">
-  <tr><th>course_id     </th><td><%= form.text_field :course_id   , value: @course.course_id   , size: 50, :readonly => true %></td></tr>
-  <tr><th>course_title  </th><td><%= form.text_field :course_title, value: @course.course_title, size: 50 %></td></tr>
-  <tr><th>topic         </th><td><%= form.text_field :topic       , value: @course.topic       , size: 50 %></td></tr>
-  <tr><th>day_length    </th><td><%= form.text_field :day_length  , value: @course.day_length  , size: 50 %></td></tr>
-  <tr><th>price         </th><td><%= form.text_field :price       , value: @course.price       , size: 50 %></td></tr>
-  <tr><th>level_id      </th><td><%= form.text_field :level_id    , value: @course.level_id    , size: 50 %></td></tr>
-  <tr><th>category      </th><td><%= form.text_field :category    , value: @course.category    , size: 50 %></td></tr>
-</table>
-<%= form.submit 'Update' %>
+  <div class="form-group">
+    <%= form.label :course_id    %><%= form.text_field :course_id   , value: @course.course_id   , class: 'form-control', :readonly => true %>
+    <%= form.label :course_title %><%= form.text_field :course_title, value: @course.course_title, class: 'form-control' %>
+    <%= form.label :topic        %><%= form.text_field :topic       , value: @course.topic       , class: 'form-control' %>
+    <%= form.label :day_length   %><%= form.text_field :day_length  , value: @course.day_length  , class: 'form-control' %>
+    <%= form.label :price        %><%= form.text_field :price       , value: @course.price       , class: 'form-control' %>
+    <%= form.label :level_id     %><%= form.text_field :level_id    , value: @course.level_id    , class: 'form-control' %>
+    <%= form.label :category     %><%= form.text_field :category    , value: @course.category    , class: 'form-control' %>
+  </div>
+  <%= form.submit 'Update', class: 'btn btn-primary' %>
 <% end %>
-</p>

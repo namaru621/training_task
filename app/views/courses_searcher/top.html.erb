@@ -6,8 +6,6 @@
 <h1>CourseSearcher</h1>
 <p>logo image</p>
 <%= link_to "All_search", {controller: 'courses_searcher', action: 'index'}, {method: :get} %><br>
-word search
-
 <!--
   なんとformを使うためにそれ用のタグがあるらしいな？
   というわけでform_withを使って検索窓、ラジオボタンを実装する
@@ -15,9 +13,15 @@ word search
 -->
 
 <%= form_with url: courses_searcher_multiple_list_path, :method => 'get', local: true do |form| %>
-  <%= form.text_field :search %>
-  <%= form.radio_button :mode, 'keyword', {:checked => true} %>keyword
-  <%= form.radio_button :mode, 'category', {:checked => false} %>category<br>
-  <%= form.submit 'Search', :name => nil %>
+  <div class="form-group">
+    <%= form.text_field :search, class: 'form-control' %>
+    <div class="radio-inline">
+      <%= form.radio_button :mode, 'keyword', {:checked => true} %><lavel>keyword</lavel>
+    </div>
+    <div class="radio-inline">
+      <%= form.radio_button :mode, 'category', {:checked => false} %><lavel>category</lavel>
+    </div>
+  </div>
+  <%= form.submit 'Search', class: 'btn btn-primary' %>
 <% end %>
 

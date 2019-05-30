@@ -3,16 +3,15 @@
   テンプレートは./app/view/layouts/app/views/layouts/application.html.erb
 -->
 
-<h2>Search result</h2>
+<h1>Search result</h1>
 <p>
-word search<br>
 <!--
   検索結果一覧の表示
   link_toでの値渡し付近で躓きがち、でも単純に値が渡せるらしい
   渡した先はparam[:search_result]
 -->
-<%= @courses.length %>
-<table border="1">
+検索結果：<%= @courses.length %>件
+<table class="table table-striped table-condensed">
   <tr>
     <th>course_id</th><th>course_title</th><th>topic</th><th>day_length</th><th>price</th>
     <th>level_id</th><th>category</th>
